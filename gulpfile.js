@@ -17,7 +17,10 @@ const del = require('del'); //For Cleaning build/dist for fresh export
 const options = require("./config"); //paths and other options from config.js
 const browserSync = require('browser-sync').create();
 
-const sass = require('gulp-sass'); //For Compiling SASS files
+const pug = require('gulp-pug'); //For Compiling SASS files
+const sass = require('@selfisekai/gulp-sass'); //For Compiling SASS files
+sass.compiler = require('sass'); //For Compiling SASS files
+const plumber = require('gulp-plumber'); //For Compiling SASS files
 const postcss = require('gulp-postcss'); //For Compiling tailwind utilities with tailwind config
 const concat = require('gulp-concat'); //For Concatinating js,css files
 const uglify = require('gulp-uglify');//To Minify JS files
@@ -50,12 +53,20 @@ function previewReload(done){
 
 //Development Tasks
 function devHTML(){
-  return src(`${options.paths.src.base}/**/*.html`).pipe(dest(options.paths.dist.base));
+  return src(`${options.paths.src.base}/**/*.pug`)
+    .pipe(plumber())
+    .pipe(
+      pug({
+        pretty: true
+      })
+    )
+    .pipe(dest(options.paths.dist.base));
 } 
 
 function devStyles(){
   const tailwindcss = require('tailwindcss'); 
-  return src(`${options.paths.src.css}/**/*`).pipe(sass().on('error', sass.logError))
+  return src(`${options.paths.src.css}/**/*`)
+    .pipe(sass().on('error', sass.logError))
     .pipe(postcss([
       tailwindcss(options.config.tailwindjs),
       require('autoprefixer'),
@@ -77,7 +88,7 @@ function devImages(){
 }
 
 function watchFiles(){
-  watch(`${options.paths.src.base}/**/*.html`,series(devHTML, previewReload));
+  watch(`${options.paths.src.base}/**/*.pug`,series(devHTML, previewReload));
   watch([options.config.tailwindjs, `${options.paths.src.css}/**/*`],series(devStyles, previewReload));
   watch(`${options.paths.src.js}/**/*.js`,series(devScripts, previewReload));
   watch(`${options.paths.src.img}/**/*`,series(devImages, previewReload));
@@ -91,7 +102,7 @@ function devClean(){
 
 //Production Tasks (Optimized Build for Live/Production Sites)
 function prodHTML(){
-  return src(`${options.paths.src.base}/**/*.html`).pipe(dest(options.paths.build.base));
+  return src(`${options.paths.src.base}/**/*.pug`).pipe(dest(options.paths.build.base));
 }
 
 function prodStyles(){
