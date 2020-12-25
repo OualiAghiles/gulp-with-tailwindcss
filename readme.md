@@ -30,7 +30,7 @@ To change the path of files and destination/build folder, edit options in **conf
   paths: {
      root: "./",
      src: {
-        base: "./src",
+        base: "./src/template",
         css: "./src/css",
         js: "./src/js",
         img: "./src/img"

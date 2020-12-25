@@ -1,5 +1,5 @@
 module.exports = {
-  content: ['./src/**/*.html'],
+  content: ['./src/template/**/*.pug'],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},

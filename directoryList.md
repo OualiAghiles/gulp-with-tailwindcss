@@ -24,7 +24,8 @@
     |   |-- js
     |       |-- scripts.js
     |-- src
-        |-- index.html
+        |-- template
+            |-- index.pug
         |-- css
         |   |-- a.tailwind.scss
         |   |-- main.scss

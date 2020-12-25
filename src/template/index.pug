@@ -1,0 +1,80 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible' content='ie=edge')
+    title Gulp with TailwindCSS
+    link(rel='stylesheet' type='text/css' href='css/style.css')
+  body.bg-gray-200
+    header.p-20.bg-gradient-to-r.from-red-400.via-red-500.to-pink-500.text-center
+      h1.hero-heading Gulp with TailwindCSS Kit
+      p.w-full.text-center.text-white.text-xl.leading-5.mb-10 Updated with Tailwind 2.0, PostCss 8.0+
+      .py-15.flex.justify-center.space-x-6
+        a.github-button(href='https://github.com/manjumjn' data-show-count='true' aria-label='Follow @manjumjn on GitHub') Follow @manjumjn
+        a.github-button(href='https://github.com/manjumjn/gulp-with-tailwindcss' data-icon='octicon-star' data-show-count='true' aria-label='Star manjumjn/gulp-with-tailwindcss on GitHub') Star
+        a.github-button(href='https://github.com/manjumjn/gulp-with-tailwindcss/fork' data-icon='octicon-repo-forked' data-show-count='true' aria-label='Fork manjumjn/gulp-with-tailwindcss on GitHub') Fork
+        a.github-button(href='https://github.com/manjumjn/gulp-with-tailwindcss/archive/master.zip' data-icon='octicon-cloud-download' aria-label='Download manjumjn/gulp-with-tailwindcss on GitHub') Download
+    .mx-auto.py-20.max-w-2xl
+      img.shadow.transition-shadow.duration-500.rounded.mb-10(class='hover:shadow-lg' src='img/cover.jpg' alt='Gulp with TailwindCSS')
+      .instructions
+        .mb-20.text-gray-700
+          h4.sub-title Usage
+          p Use the following commands to get started.
+          code.code
+            em // To Install Dev Depedencies
+            br
+            |                     npm install
+            br
+            br
+            em // To start development and server for live preview
+            br
+            |                     npm run dev
+            br
+            br
+            em // To generate minifed,optamized files for production server
+            br
+            |                     npm run prod
+        .mb-10.text-gray-600
+          h4.sub-title Options
+          p
+            | To change the path of files and destination/build folder configure at 
+            b.font-bold config.js
+            |  file
+          // Ignore the messay code :P only for demo
+          code.code.pre
+            | config: {
+            | ...
+            | port: 9050 
+            em //Update port here
+            | },
+            | paths: {
+            |     root: "./",
+            |     src: {
+            |         base: "./src",
+            |         css: "./src/css",
+            |         js: "./src/js",
+            |         img: "./src/img"
+            |     },
+            |     dist: {
+            |         base: "./dist",
+            |         css: "./dist/css",
+            |         js: "./dist/js",
+            |         img: "./dist/img"
+            |     },
+            |     build: {
+            |         base: "./build",
+            |         css: "./build/css",
+            |         js: "./build/js",
+            |         img: "./build/img"
+            |     }
+            | }
+      .social
+        p.w-full.text-center Want to connect with me?
+        .flex.justify-center.space-x-6
+          a(href='https://www.facebook.com/manjumjn') Facebook
+          a(href='https://twitter.com/manju_mjn') Twitter
+          a(href='mailto:manjumjng2@gmail.com') Email Me
+    script(src='js/scripts.js')
+    // Demo Purpose
+    script(async='' defer='' src='https://buttons.github.io/buttons.js')
